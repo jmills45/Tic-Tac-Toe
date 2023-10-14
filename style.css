@@ -41,6 +41,8 @@ header {
     font-size: 5em;
     color: white;
     text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 /*  ---------Main Content--------- */
@@ -127,7 +129,7 @@ main {
     border: none;
     border-radius: 10px;
     text-align: center;
-    font-size: 1em;
+    font-size: var(--scaling-font);
     font-weight: 800;
     color: white;
 }

@@ -162,17 +162,16 @@ const gameController = (function() {
 const roundController = (function() {
 
     const playRound = (divClicked) => {
-
         // Get GameOver status and activePlayer
         let isGameOver = gameController.getGameOver();
         let player = gameController.getActivePlayer();
-
+        
         // Human Player Code Block - check if bot and gameOver status
         if (player.bot === false && isGameOver === false) {
 
             let playerMove = divClicked.target;
             let playerMarker = player.playerMarker;
-
+            
             // Updates board - returns true if successful - continues code block
             if (gameBoard.updateBoard(playerMove, playerMarker)){
                 gameBoard.renderBoard();
@@ -225,7 +224,11 @@ const roundController = (function() {
     
                 gameController.toggleActivePlayer();
                 player = gameController.getActivePlayer();
-            };         
+            }; 
+            
+            if(isGameOver === false) {
+                UIController.updateResults(`${player.playerName}'s Turn`)
+            }
         } 
         
         // Computer Player Code Block - check if bot and gameOver status
@@ -292,6 +295,10 @@ const roundController = (function() {
                         playRound();
                     }
                 }, 1000)
+            }
+
+            if(isGameOver === false) {
+                UIController.updateResults(`${player.playerName}'s Turn`)
             }
         }     
     }
